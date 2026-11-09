@@ -1,0 +1,7 @@
+body { background: #f4f5f7; }
+.bg-escuro { background: #1f2933; }
+.cartao-total { border: 0; border-left: 4px solid #f58220; }
+.cartao-total .numero { font-size: 2rem; font-weight: 700; }
+.tela-login { max-width: 420px; margin: 8vh auto; }
+.table td, .table th { vertical-align: middle; }
+.btn-acoes form { display: inline; }

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block titulo %}{{ 'Editar' if prof else 'Novo' }} profissional{% endblock %}
+{% block conteudo %}
+<h2 class="mb-3">{{ 'Editar' if prof else 'Novo' }} profissional</h2>
+<div class="card shadow-sm" style="max-width: 640px"><div class="card-body">
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label" for="nome">Nome *</label>
+    <input class="form-control" id="nome" name="nome" required value="{{ prof['nome'] if prof else '' }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="especialidade">Especialidade</label>
+    <input class="form-control" id="especialidade" name="especialidade" value="{{ (prof['especialidade'] or '') if prof else '' }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="telefone">Telefone</label>
+    <input class="form-control" id="telefone" name="telefone" value="{{ (prof['telefone'] or '') if prof else '' }}">
+  </div>
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" id="ativo" name="ativo" {{ 'checked' if not prof or prof['ativo'] }}>
+    <label class="form-check-label" for="ativo">Ativo (aparece na hora de agendar)</label>
+  </div>
+  <button class="btn btn-dark" type="submit">Salvar</button>
+  <a class="btn btn-link" href="{{ url_for('profissionais_lista') }}">Cancelar</a>
+</form>
+</div></div>
+{% endblock %}

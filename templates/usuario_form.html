@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block titulo %}Cadastro de usuário{% endblock %}
+{% block conteudo %}
+<div class="tela-login">
+  <h2 class="mb-3 text-center">Novo usuário</h2>
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+      <form method="post">
+        <div class="mb-3">
+          <label class="form-label" for="nome">Nome</label>
+          <input class="form-control" id="nome" name="nome" value="{{ request.form.nome }}" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="email">E-mail</label>
+          <input class="form-control" type="email" id="email" name="email" value="{{ request.form.email }}" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="senha">Senha (mínimo 6 caracteres)</label>
+          <input class="form-control" type="password" id="senha" name="senha" minlength="6" required>
+        </div>
+        <button class="btn btn-dark w-100" type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+  <p class="text-center mt-3"><a href="{{ url_for('login') }}">Voltar ao login</a></p>
+</div>
+{% endblock %}

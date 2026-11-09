@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %}Agendamentos{% endblock %}
+{% block conteudo %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="mb-0">Agendamentos</h2>
+  <a class="btn btn-dark" href="{{ url_for('agendamento_form') }}"><i class="bi bi-plus-lg"></i> Novo agendamento</a>
+</div>
+<form class="row g-2 mb-3" method="get">
+  <div class="col-sm-4">
+    <input class="form-control" type="date" name="data" value="{{ data }}">
+  </div>
+  <div class="col-sm-4">
+    <select class="form-select" name="status">
+      <option value="">Todos os status</option>
+      {% for chave, nome in STATUS.items() %}
+        <option value="{{ chave }}" {{ 'selected' if status == chave }}>{{ nome }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-outline-secondary"><i class="bi bi-funnel"></i> Filtrar</button>
+    <a class="btn btn-link" href="{{ url_for('agendamentos_lista') }}">Limpar</a>
+  </div>
+</form>
+{% include "_tabela_agenda.html" %}
+{% endblock %}

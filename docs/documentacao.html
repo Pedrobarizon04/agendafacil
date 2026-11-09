@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>AgendaFácil - Documentação</title>
+<style>
+  @page { size: A4; margin: 3cm 2cm 2cm 3cm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 12pt; line-height: 1.5; }
+  .quebra { break-before: page; }
+  p { text-indent: 1.25cm; margin: 0; text-align: justify; }
+  h1 { font-size: 12pt; font-weight: bold; text-transform: uppercase; margin: 0 0 18pt; }
+  h2 { font-size: 12pt; font-weight: bold; margin: 18pt 0 6pt; break-after: avoid; }
+  .centro { text-align: center; text-indent: 0; }
+  ul.lista, ol.lista { margin: 0 0 0 1.25cm; padding-left: 0.6cm; text-align: justify; }
+
+  /* ---------- Capa (modelo UniFil) ---------- */
+  .capa { height: 24.6cm; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .capa .logo { width: 9.8cm; margin-bottom: 0.45cm; }
+  .capa .faixa { width: 100%; height: 0; border-top: 3px solid #f58220; }
+  .capa .autor { margin-top: 1.1cm; }
+  .capa .disciplina { margin-top: 2.2cm; font-weight: bold; font-size: 10.5pt; line-height: 1.3; }
+  .capa .curso { font-weight: bold; margin-top: 2pt; }
+  .capa .titulo { margin-top: auto; font-size: 21pt; font-weight: bold; line-height: 1.6; }
+  .capa .subtitulo { margin-top: 6pt; }
+  .capa .rodape { margin-top: auto; width: 100%; }
+  .capa .local { margin-top: 0.4cm; line-height: 1.3; }
+
+  /* ---------- Sumário ---------- */
+  .sumario h1 { text-align: center; }
+  .sumario a { color: #000; text-decoration: none; display: flex; align-items: baseline; }
+  .sumario .item { margin: 0; }
+  .sumario .nivel1 { font-weight: bold; text-transform: uppercase; }
+  .sumario .nivel2 { padding-left: 0; }
+  .sumario .pontos { flex: 1; border-bottom: 1px dotted #000; margin: 0 4pt; transform: translateY(-4pt); }
+
+  /* ---------- Quadros, tabelas e figuras ---------- */
+  .legenda { font-size: 10pt; line-height: 1.2; margin: 12pt 0 3pt; text-indent: 0; text-align: left; break-after: avoid; }
+  .fonte { font-size: 10pt; line-height: 1.2; margin: 3pt 0 12pt; text-indent: 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 10pt; line-height: 1.25; }
+  table.quadro th, table.quadro td { border: 1px solid #000; padding: 3pt 5pt; vertical-align: top; text-align: left; }
+  table.quadro th { background: #f2f2f2; }
+  table.quadro td.nw { white-space: nowrap; }
+  thead { display: table-header-group; }  /* repete o cabeçalho se o quadro continuar na outra página */
+  table.quadro { break-inside: avoid; }   /* quadros curtos não se dividem */
+  table.quadro.longo { break-inside: auto; }
+  tr { break-inside: avoid; }
+  figure { margin: 0; break-inside: avoid; }
+  figure img { display: block; width: 100%; border: 0; }
+  .recorte { overflow: hidden; border: 1px solid #999; }
+  pre { font-family: Consolas, "Courier New", monospace; font-size: 9pt; line-height: 1.3; background: #f6f6f6;
+        border: 1px solid #ccc; padding: 6pt 8pt; margin: 0; white-space: pre-wrap; break-inside: avoid; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 10.5pt; }
+
+  /* ---------- Referências ---------- */
+  .refs h1 { text-align: center; }
+  .refs p { text-indent: 0; text-align: left; line-height: 1.0; margin-bottom: 12pt; }
+</style>
+</head>
+<body>
+
+<!-- =============================== CAPA =============================== -->
+<section class="capa">
+  <img class="logo" src="img/logo-unifil.jpg" alt="UniFil - Centro Universitário Filadélfia">
+  <div class="faixa"></div>
+  <div class="autor">PEDRO LAMBERTO BARIZON</div>
+  <div class="disciplina">DISCIPLINA: PROJETO DE DESENVOLVIMENTO DE SOFTWARE II<br>DOCENTE: FERNANDO NAKAGAWA</div>
+  <div class="curso">CURSO DE ENGENHARIA DE SOFTWARE UNIFIL</div>
+  <div class="titulo">AGENDAFÁCIL: SISTEMA WEB<br>DE AGENDAMENTO<br>PARA BARBEARIAS</div>
+  <div class="subtitulo">Projeto de Desenvolvimento de Software II</div>
+  <div class="rodape">
+    <div class="faixa"></div>
+    <div class="local">LONDRINA – PR<br>2026</div>
+  </div>
+</section>
+
+<!-- ============================== SUMÁRIO ============================= -->
+<section class="sumario quebra">
+  <h1>Sumário</h1>
+  <div class="item nivel1"><a href="#s1">1 INTRODUÇÃO<span class="pontos"></span><span class="pg" data-ref="s1">00</span></a></div>
+  <div class="item nivel1"><a href="#s2">2 DESENVOLVIMENTO<span class="pontos"></span><span class="pg" data-ref="s2">00</span></a></div>
+  <div class="item nivel2"><a href="#s2_1">2.1 Visão geral e arquitetura<span class="pontos"></span><span class="pg" data-ref="s2_1">00</span></a></div>
+  <div class="item nivel2"><a href="#s2_2">2.2 Requisitos funcionais<span class="pontos"></span><span class="pg" data-ref="s2_2">00</span></a></div>
+  <div class="item nivel2"><a href="#s2_3">2.3 Requisitos não funcionais<span class="pontos"></span><span class="pg" data-ref="s2_3">00</span></a></div>
+  <div class="item nivel2"><a href="#s2_4">2.4 Regras de negócio<span class="pontos"></span><span class="pg" data-ref="s2_4">00</span></a></div>
+  <div class="item nivel2"><a href="#s2_5">2.5 Diagrama de casos de uso<span class="pontos"></span><span class="pg" data-ref="s2_5">00</span></a></div>
+  <div class="item nivel2"><a href="#s2_6">2.6 Diagrama entidade-relacionamento (DER)<span class="pontos"></span><span class="pg" data-ref="s2_6">00</span></a></div>
+  <div class="item nivel2"><a href="#s2_7">2.7 Implementação<span class="pontos"></span><span class="pg" data-ref="s2_7">00</span></a></div>
+  <div class="item nivel2"><a href="#s2_8">2.8 Testes e execução<span class="pontos"></span><span class="pg" data-ref="s2_8">00</span></a></div>
+  <div class="item nivel1"><a href="#s3">3 CONCLUSÃO<span class="pontos"></span><span class="pg" data-ref="s3">00</span></a></div>
+  <div class="item nivel1"><a href="#ref">REFERÊNCIAS<span class="pontos"></span><span class="pg" data-ref="ref">00</span></a></div>
+</section>
+
+<!-- ============================ 1 INTRODUÇÃO ========================== -->
+<section class="quebra">
+  <h1 id="s1">1 INTRODUÇÃO</h1>
+  <p>Barbearias de pequeno porte costumam controlar os horários dos clientes em cadernos, planilhas ou
+  conversas de aplicativos de mensagem. Esse controle manual funciona enquanto o movimento é pequeno, mas
+  logo surgem problemas: dois clientes marcados no mesmo horário com o mesmo profissional, dificuldade para
+  saber quem será atendido no dia e falta de um cadastro organizado de clientes e serviços.</p>
+  <p>Para resolver esse problema, este trabalho apresenta o <b>AgendaFácil</b>, um sistema web de agendamento
+  para barbearias. O sistema permite que o atendente cadastre clientes, profissionais e serviços e, a partir
+  deles, marque atendimentos em uma agenda. Ao criar ou alterar um agendamento, o sistema verifica se o
+  profissional já está ocupado naquele horário, considerando a duração do serviço, e impede o conflito. A
+  página inicial mostra os atendimentos do dia e os totais cadastrados.</p>
+  <p>O sistema implementa as quatro operações básicas de persistência, conhecidas como CRUD (<i>Create, Read,
+  Update, Delete</i>), sobre as entidades cliente, profissional, serviço e agendamento, todas armazenadas em
+  um banco de dados relacional.</p>
+  <p>A <i>stack</i> foi escolhida pela simplicidade de instalação e pela clareza do código:</p>
+  <ul class="lista">
+    <li><b>Python 3.12</b>, linguagem de programação do lado do servidor (PYTHON SOFTWARE FOUNDATION, 2026);</li>
+    <li><b>Flask 3.1</b>, microframework web responsável pelas rotas, sessões e respostas HTTP (PALLETS, 2026);</li>
+    <li><b>Jinja2</b>, motor de templates que gera as páginas HTML, incluído no Flask;</li>
+    <li><b>SQLite</b>, banco de dados relacional armazenado em um único arquivo, acessado pelo módulo
+        <code>sqlite3</code> da biblioteca padrão do Python (SQLITE, 2026);</li>
+    <li><b>Bootstrap 5.3</b>, biblioteca de componentes visuais para a interface responsiva (BOOTSTRAP, 2026);</li>
+    <li><b>Git e GitHub</b>, para versionamento e hospedagem do código-fonte.</li>
+  </ul>
+  <p>O documento está organizado da seguinte forma: o capítulo 2 apresenta o desenvolvimento, com os
+  requisitos, os diagramas de casos de uso e entidade-relacionamento, a implementação e os testes; o capítulo
+  3 traz a conclusão e, por fim, são listadas as referências utilizadas.</p>
+</section>
+
+<!-- ========================== 2 DESENVOLVIMENTO ======================== -->
+<section class="quebra">
+  <h1 id="s2">2 DESENVOLVIMENTO</h1>
+  <p>Este capítulo descreve como o sistema foi especificado e construído. Os requisitos foram levantados a
+  partir da rotina de atendimento de uma barbearia e serviram de base para os diagramas e para a
+  implementação, seguindo a ideia de que a especificação orienta a construção do software (SOMMERVILLE, 2011).</p>
+
+  <h2 id="s2_1">2.1 Visão geral e arquitetura</h2>
+  <p>O AgendaFácil é uma aplicação web que segue o padrão cliente-servidor. O navegador do usuário envia
+  requisições ao servidor Flask, que consulta ou altera o banco SQLite e devolve páginas HTML geradas pelos
+  templates Jinja2. A organização se aproxima do padrão MVC (<i>Model-View-Controller</i>): o banco de dados e o
+  arquivo <code>schema.sql</code> representam o modelo, os templates representam a visão e as funções de rota em
+  <code>app.py</code> fazem o papel de controlador. O Quadro 1 mostra a estrutura de pastas do projeto.</p>
+
+  <p class="legenda">Quadro 1 – Estrutura de pastas do projeto</p>
+  <table class="quadro">
+    <thead><tr><th style="width:32%">Arquivo / pasta</th><th>Conteúdo</th></tr></thead>
+    <tr><td class="nw"><code>app.py</code></td><td>Aplicação Flask: rotas de login e dos CRUDs, regras de negócio e filtros de formatação.</td></tr>
+    <tr><td class="nw"><code>db.py</code></td><td>Conexão com o SQLite, criação das tabelas e carga de dados de exemplo.</td></tr>
+    <tr><td class="nw"><code>schema.sql</code></td><td>Comandos <code>CREATE TABLE</code> com chaves primárias, estrangeiras e restrições.</td></tr>
+    <tr><td class="nw"><code>templates/</code></td><td>Páginas HTML (Jinja2): login, início e listas/formulários de cada entidade.</td></tr>
+    <tr><td class="nw"><code>static/estilo.css</code></td><td>Ajustes visuais sobre o Bootstrap.</td></tr>
+    <tr><td class="nw"><code>tests/test_app.py</code></td><td>Testes automatizados com <code>unittest</code>.</td></tr>
+    <tr><td class="nw"><code>docs/</code></td><td>Esta documentação e os diagramas.</td></tr>
+    <tr><td class="nw"><code>instance/agendafacil.db</code></td><td>Arquivo do banco de dados, criado automaticamente na primeira execução.</td></tr>
+  </table>
+  <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+
+  <h2 id="s2_2">2.2 Requisitos funcionais</h2>
+  <p>Requisitos funcionais descrevem o que o sistema deve fazer, ou seja, os serviços que ele oferece ao
+  usuário (SOMMERVILLE, 2011). O Quadro 2 lista os requisitos funcionais do AgendaFácil.</p>
+
+  <p class="legenda">Quadro 2 – Requisitos funcionais</p>
+  <table class="quadro">
+    <thead><tr><th style="width:11%">Código</th><th>Descrição</th></tr></thead>
+    <tr><td>RF01</td><td>O sistema deve permitir o cadastro de usuários com nome, e-mail e senha.</td></tr>
+    <tr><td>RF02</td><td>O sistema deve autenticar o usuário por e-mail e senha e permitir encerrar a sessão (<i>logout</i>).</td></tr>
+    <tr><td>RF03</td><td>O sistema deve permitir incluir, consultar, alterar e excluir clientes.</td></tr>
+    <tr><td>RF04</td><td>O sistema deve permitir buscar clientes por nome ou telefone.</td></tr>
+    <tr><td>RF05</td><td>O sistema deve permitir incluir, consultar, alterar e excluir profissionais, indicando se estão ativos.</td></tr>
+    <tr><td>RF06</td><td>O sistema deve permitir incluir, consultar, alterar e excluir serviços, com preço e duração em minutos.</td></tr>
+    <tr><td>RF07</td><td>O sistema deve permitir incluir, consultar, alterar e excluir agendamentos, vinculando cliente, profissional e serviço a uma data e hora.</td></tr>
+    <tr><td>RF08</td><td>O sistema deve permitir alterar o status do agendamento para agendado, concluído ou cancelado.</td></tr>
+    <tr><td>RF09</td><td>O sistema deve permitir filtrar os agendamentos por data e por status.</td></tr>
+    <tr><td>RF10</td><td>O sistema deve exibir, na página inicial, os totais cadastrados e a agenda do dia.</td></tr>
+    <tr><td>RF11</td><td>O sistema deve registrar qual usuário criou cada agendamento.</td></tr>
+  </table>
+  <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+
+  <h2 id="s2_3">2.3 Requisitos não funcionais</h2>
+  <p>Requisitos não funcionais definem restrições e qualidades do sistema, como segurança, usabilidade e
+  tecnologia adotada (PRESSMAN; MAXIM, 2016). Eles estão no Quadro 3.</p>
+
+  <p class="legenda">Quadro 3 – Requisitos não funcionais</p>
+  <table class="quadro">
+    <thead><tr><th style="width:11%">Código</th><th style="width:20%">Categoria</th><th>Descrição</th></tr></thead>
+    <tr><td>RNF01</td><td>Implementação</td><td>O sistema deve ser desenvolvido em Python 3.12 com o framework Flask 3.1.</td></tr>
+    <tr><td>RNF02</td><td>Implementação</td><td>Os dados devem ser armazenados em banco relacional SQLite, com chaves estrangeiras ativas.</td></tr>
+    <tr><td>RNF03</td><td>Segurança</td><td>As senhas devem ser armazenadas somente como <i>hash</i>, nunca em texto puro.</td></tr>
+    <tr><td>RNF04</td><td>Segurança</td><td>Todas as páginas, exceto login e cadastro de usuário, devem exigir sessão autenticada.</td></tr>
+    <tr><td>RNF05</td><td>Segurança</td><td>As consultas SQL devem ser parametrizadas, para evitar injeção de SQL.</td></tr>
+    <tr><td>RNF06</td><td>Usabilidade</td><td>A interface deve ser responsiva, podendo ser usada no computador e no celular.</td></tr>
+    <tr><td>RNF07</td><td>Usabilidade</td><td>A interface deve estar em português do Brasil, com datas em dd/mm/aaaa e valores em reais (R$).</td></tr>
+    <tr><td>RNF08</td><td>Portabilidade</td><td>O sistema deve executar localmente sem servidor de banco de dados, exigindo apenas o Python e o Flask.</td></tr>
+    <tr><td>RNF09</td><td>Manutenibilidade</td><td>O código-fonte deve ser versionado com Git e hospedado no GitHub.</td></tr>
+  </table>
+  <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+
+  <h2 id="s2_4">2.4 Regras de negócio</h2>
+  <p>Além dos requisitos, algumas regras de negócio controlam o comportamento do sistema e são verificadas no
+  servidor ou pelo próprio banco de dados (Quadro 4).</p>
+
+  <p class="legenda">Quadro 4 – Regras de negócio</p>
+  <table class="quadro">
+    <thead><tr><th style="width:11%">Código</th><th>Descrição</th></tr></thead>
+    <tr><td>RN01</td><td>Um profissional não pode ter dois agendamentos que se sobreponham no tempo. A sobreposição considera a duração do serviço, e agendamentos cancelados não ocupam horário.</td></tr>
+    <tr><td>RN02</td><td>Não é permitido criar um agendamento com data e hora que já passaram.</td></tr>
+    <tr><td>RN03</td><td>Clientes, profissionais e serviços que possuem agendamentos vinculados não podem ser excluídos.</td></tr>
+    <tr><td>RN04</td><td>Somente profissionais ativos aparecem como opção ao criar ou editar um agendamento.</td></tr>
+    <tr><td>RN05</td><td>O e-mail do usuário é único, e a senha deve ter pelo menos 6 caracteres.</td></tr>
+  </table>
+  <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+
+  <h2 id="s2_5">2.5 Diagrama de casos de uso</h2>
+  <p>O diagrama de casos de uso da UML mostra as funcionalidades do sistema do ponto de vista de quem o
+  utiliza (BOOCH; RUMBAUGH; JACOBSON, 2012). No AgendaFácil há um único ator, o atendente da barbearia, que
+  interage com cinco casos de uso, apresentados na Figura 1. O caso de uso UC05 inclui obrigatoriamente a
+  verificação de disponibilidade do profissional, que aplica a regra RN01.</p>
+
+  <figure>
+    <p class="legenda">Figura 1 – Diagrama de casos de uso</p>
+    <img src="img/casos-de-uso.svg" alt="Diagrama de casos de uso">
+    <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+  </figure>
+
+  <p>O Quadro 5 resume cada caso de uso e os requisitos que ele atende.</p>
+  <p class="legenda">Quadro 5 – Descrição resumida dos casos de uso</p>
+  <table class="quadro">
+    <thead><tr><th style="width:11%">Código</th><th style="width:24%">Caso de uso</th><th>Descrição</th><th style="width:15%">Requisitos</th></tr></thead>
+    <tr><td>UC01</td><td>Autenticar usuário</td><td>O atendente informa e-mail e senha para entrar no sistema. Também pode criar uma conta e encerrar a sessão.</td><td>RF01, RF02</td></tr>
+    <tr><td>UC02</td><td>Manter clientes</td><td>Incluir, consultar com busca, alterar e excluir clientes.</td><td>RF03, RF04</td></tr>
+    <tr><td>UC03</td><td>Manter profissionais</td><td>Incluir, consultar, alterar (inclusive ativar ou inativar) e excluir profissionais.</td><td>RF05</td></tr>
+    <tr><td>UC04</td><td>Manter serviços</td><td>Incluir, consultar, alterar e excluir serviços com preço e duração.</td><td>RF06</td></tr>
+    <tr><td>UC05</td><td>Gerenciar agendamentos</td><td>Criar, consultar com filtros, alterar dados e status e excluir agendamentos; consultar a agenda do dia.</td><td>RF07 a RF11</td></tr>
+  </table>
+  <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+
+  <p>Por ser o caso de uso central do sistema, o UC05 é detalhado no Quadro 6.</p>
+  <p class="legenda">Quadro 6 – Especificação do caso de uso UC05 – Gerenciar agendamentos</p>
+  <table class="quadro">
+    <tr><td style="width:24%"><b>Ator</b></td><td>Atendente</td></tr>
+    <tr><td><b>Pré-condição</b></td><td>O atendente está autenticado (UC01) e existem cliente, profissional ativo e serviço cadastrados.</td></tr>
+    <tr><td><b>Fluxo principal</b></td><td>1. O atendente acessa “Novo agendamento”.<br>
+      2. O sistema exibe o formulário com as listas de clientes, profissionais ativos e serviços.<br>
+      3. O atendente seleciona cliente, profissional e serviço, informa data e hora e, se quiser, uma observação.<br>
+      4. O sistema verifica se a data não está no passado (RN02).<br>
+      5. O sistema verifica a disponibilidade do profissional, considerando a duração do serviço (RN01).<br>
+      6. O sistema grava o agendamento com status “agendado” e o usuário que o criou, e exibe a lista de agendamentos.</td></tr>
+    <tr><td><b>Fluxos alternativos</b></td><td>A1 – Data no passado: no passo 4, o sistema exibe a mensagem de erro e mantém o formulário.<br>
+      A2 – Horário ocupado: no passo 5, o sistema informa que o profissional já tem atendimento no horário.<br>
+      A3 – Editar: o atendente escolhe um agendamento, altera os dados ou o status e salva; os passos 5 e 6 se repetem.<br>
+      A4 – Excluir: o atendente confirma a exclusão e o registro é removido.<br>
+      A5 – Consultar: o atendente filtra a lista por data e/ou status.</td></tr>
+    <tr><td><b>Pós-condição</b></td><td>A agenda reflete a inclusão, alteração ou exclusão realizada.</td></tr>
+  </table>
+  <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+
+  <h2 id="s2_6">2.6 Diagrama entidade-relacionamento (DER)</h2>
+  <p>O banco de dados possui cinco tabelas. A entidade central é <b>agendamento</b>, que se relaciona com
+  <b>cliente</b>, <b>profissional</b> e <b>serviço</b> em relacionamentos um-para-muitos: um cliente pode ter
+  vários agendamentos, mas cada agendamento pertence a um único cliente, e o mesmo vale para profissional e
+  serviço. A tabela <b>usuario</b> registra quem criou o agendamento; esse relacionamento é opcional
+  (0..1), pois, se um usuário for removido, o agendamento é mantido com o campo vazio. O modelo está
+  normalizado, evitando repetição de dados como nome do cliente ou preço do serviço dentro do agendamento
+  (ELMASRI; NAVATHE, 2011). A Figura 2 apresenta o DER na notação “pé de galinha”.</p>
+
+  <figure>
+    <p class="legenda">Figura 2 – Diagrama entidade-relacionamento</p>
+    <img src="img/der.svg" alt="Diagrama entidade-relacionamento">
+    <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+  </figure>
+
+  <p>O Quadro 7 apresenta o dicionário de dados com os tipos e restrições de cada campo.</p>
+  <p class="legenda">Quadro 7 – Dicionário de dados</p>
+  <table class="quadro longo">
+    <thead><tr><th style="width:17%">Tabela</th><th style="width:22%">Campo</th><th style="width:13%">Tipo</th><th>Restrições / descrição</th></tr></thead>
+    <tr><td rowspan="5">usuario</td><td>id</td><td>INTEGER</td><td>Chave primária, autoincremento</td></tr>
+    <tr><td>nome</td><td>TEXT</td><td>Obrigatório</td></tr>
+    <tr><td>email</td><td>TEXT</td><td>Obrigatório e único</td></tr>
+    <tr><td>senha_hash</td><td>TEXT</td><td>Hash da senha</td></tr>
+    <tr><td>criado_em</td><td>TEXT</td><td>Data de cadastro (automática)</td></tr>
+    <tr><td rowspan="5">cliente</td><td>id</td><td>INTEGER</td><td>Chave primária, autoincremento</td></tr>
+    <tr><td>nome</td><td>TEXT</td><td>Obrigatório</td></tr>
+    <tr><td>telefone</td><td>TEXT</td><td>Obrigatório</td></tr>
+    <tr><td>email</td><td>TEXT</td><td>Opcional</td></tr>
+    <tr><td>criado_em</td><td>TEXT</td><td>Data de cadastro (automática)</td></tr>
+    <tr><td rowspan="5">profissional</td><td>id</td><td>INTEGER</td><td>Chave primária, autoincremento</td></tr>
+    <tr><td>nome</td><td>TEXT</td><td>Obrigatório</td></tr>
+    <tr><td>especialidade</td><td>TEXT</td><td>Opcional</td></tr>
+    <tr><td>telefone</td><td>TEXT</td><td>Opcional</td></tr>
+    <tr><td>ativo</td><td>INTEGER</td><td>0 ou 1; padrão 1 (ativo)</td></tr>
+    <tr><td rowspan="5">servico</td><td>id</td><td>INTEGER</td><td>Chave primária, autoincremento</td></tr>
+    <tr><td>nome</td><td>TEXT</td><td>Obrigatório</td></tr>
+    <tr><td>descricao</td><td>TEXT</td><td>Opcional</td></tr>
+    <tr><td>preco</td><td>REAL</td><td>Obrigatório, maior ou igual a zero</td></tr>
+    <tr><td>duracao_min</td><td>INTEGER</td><td>Obrigatório, maior que zero</td></tr>
+    <tr><td rowspan="9">agendamento</td><td>id</td><td>INTEGER</td><td>Chave primária, autoincremento</td></tr>
+    <tr><td>cliente_id</td><td>INTEGER</td><td>Chave estrangeira para cliente; exclusão restrita</td></tr>
+    <tr><td>profissional_id</td><td>INTEGER</td><td>Chave estrangeira para profissional; exclusão restrita</td></tr>
+    <tr><td>servico_id</td><td>INTEGER</td><td>Chave estrangeira para servico; exclusão restrita</td></tr>
+    <tr><td>usuario_id</td><td>INTEGER</td><td>Chave estrangeira para usuario; fica nula se o usuário for excluído</td></tr>
+    <tr><td>data_hora</td><td>TEXT</td><td>Obrigatório, formato AAAA-MM-DD HH:MM</td></tr>
+    <tr><td>status</td><td>TEXT</td><td>agendado, concluido ou cancelado; padrão agendado</td></tr>
+    <tr><td>observacao</td><td>TEXT</td><td>Opcional</td></tr>
+    <tr><td>criado_em</td><td>TEXT</td><td>Data de cadastro (automática)</td></tr>
+  </table>
+  <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+
+  <h2 id="s2_7">2.7 Implementação</h2>
+  <p>Cada entidade possui uma tela de listagem e um formulário compartilhado entre inclusão e alteração. As
+  operações de CRUD seguem o mesmo padrão de rotas em todas as entidades, como mostra o Quadro 8 para o
+  cadastro de clientes. A exclusão usa o método POST, com confirmação no navegador, para que um registro não
+  seja apagado apenas ao abrir um link.</p>
+
+  <p class="legenda">Quadro 8 – Rotas do CRUD de clientes</p>
+  <table class="quadro">
+    <thead><tr><th style="width:18%">Operação</th><th style="width:12%">Método</th><th style="width:30%">Rota</th><th>Comando SQL principal</th></tr></thead>
+    <tr><td>Consultar</td><td>GET</td><td><code>/clientes?q=</code></td><td><code>SELECT ... WHERE nome LIKE ?</code></td></tr>
+    <tr><td>Incluir</td><td>POST</td><td><code>/clientes/novo</code></td><td><code>INSERT INTO cliente ...</code></td></tr>
+    <tr><td>Alterar</td><td>POST</td><td><code>/clientes/&lt;id&gt;/editar</code></td><td><code>UPDATE cliente SET ...</code></td></tr>
+    <tr><td>Excluir</td><td>POST</td><td><code>/clientes/&lt;id&gt;/excluir</code></td><td><code>DELETE FROM cliente ...</code></td></tr>
+  </table>
+  <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+
+  <p>Todas as consultas usam parâmetros (<code>?</code>) em vez de concatenar texto digitado pelo usuário, o
+  que evita injeção de SQL (RNF05). A integridade referencial (RN03) é garantida pelo próprio SQLite, com o
+  comando <code>PRAGMA foreign_keys = ON</code> e a cláusula <code>ON DELETE RESTRICT</code>: quando se tenta
+  excluir um cliente com agendamentos, o banco recusa a operação e o sistema mostra uma mensagem ao usuário.
+  As senhas são gravadas com a função <code>generate_password_hash</code> da biblioteca Werkzeug, que acompanha
+  o Flask (RNF03).</p>
+  <p>A regra mais importante do sistema é a que impede conflito de horário (RN01). O Código 1 mostra a
+  função que a implementa: ela busca os agendamentos não cancelados do profissional no mesmo dia e verifica
+  se algum intervalo se sobrepõe ao novo, comparando início e fim de cada atendimento.</p>
+
+  <p class="legenda">Código 1 – Verificação de disponibilidade do profissional (<code>app.py</code>)</p>
+<pre>def horario_ocupado(profissional_id, inicio, duracao_min, ignorar_id=None):
+    """Regra de negócio: um profissional não pode ter dois atendimentos ao mesmo tempo."""
+    fim = inicio + timedelta(minutes=duracao_min)
+    outros = get_db().execute(
+        """SELECT a.data_hora, s.duracao_min
+             FROM agendamento a JOIN servico s ON s.id = a.servico_id
+            WHERE a.profissional_id = ? AND a.status != 'cancelado'
+              AND date(a.data_hora) = ? AND a.id != ?""",
+        (profissional_id, inicio.date().isoformat(), ignorar_id or 0),
+    ).fetchall()
+    for outro in outros:
+        inicio_outro = datetime.strptime(outro["data_hora"], FORMATO_DATA_HORA)
+        fim_outro = inicio_outro + timedelta(minutes=outro["duracao_min"])
+        if inicio &lt; fim_outro and inicio_outro &lt; fim:
+            return True
+    return False</pre>
+  <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+
+  <p>As Figuras 3 e 4 mostram duas telas do sistema: a página inicial, com os totais e a agenda do dia, e o
+  formulário de edição de um agendamento.</p>
+
+  <figure>
+    <p class="legenda">Figura 3 – Página inicial com a agenda do dia</p>
+    <div class="recorte" style="aspect-ratio: 800 / 395"><img src="img/tela-inicio.jpg" alt="Tela inicial"></div>
+    <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+  </figure>
+
+  <figure>
+    <p class="legenda">Figura 4 – Formulário de edição de agendamento</p>
+    <div class="recorte" style="aspect-ratio: 800 / 455"><img src="img/tela-agendamento.jpg" alt="Formulário de agendamento"></div>
+    <p class="fonte">Fonte: elaborado pelo autor (2026).</p>
+  </figure>
+
+  <h2 id="s2_8">2.8 Testes e execução</h2>
+  <p>Foram escritos nove testes automatizados com o módulo <code>unittest</code> do Python, executados sobre um
+  banco de dados temporário para não afetar os dados reais. Eles verificam: o bloqueio de páginas para quem não
+  está autenticado; a recusa de senha incorreta; o ciclo completo de inclusão, alteração e exclusão de clientes,
+  profissionais e serviços; a criação de agendamento e a recusa de horário em conflito; a recusa de agendamento
+  no passado; a proteção contra exclusão de cliente com agendamentos; e a abertura de todas as páginas. Todos os
+  testes passaram na versão entregue.</p>
+  <p>Para executar o sistema, é necessário ter o Python 3.12 ou superior instalado. Os passos são: clonar o
+  repositório; criar um ambiente virtual com <code>python -m venv .venv</code>; instalar as dependências com
+  <code>pip install -r requirements.txt</code>; e iniciar o servidor com <code>python app.py</code>. O sistema
+  fica disponível em <code>http://127.0.0.1:5000</code>. Na primeira execução o banco é criado com dados de
+  exemplo e um usuário administrador, cujo acesso está descrito no arquivo README do repositório. Os testes
+  são executados com <code>python -m unittest -v</code>.</p>
+</section>
+
+<!-- ============================ 3 CONCLUSÃO =========================== -->
+<section class="quebra">
+  <h1 id="s3">3 CONCLUSÃO</h1>
+  <p>O projeto alcançou o objetivo proposto: o AgendaFácil permite cadastrar clientes, profissionais e serviços
+  e organizar a agenda de uma barbearia, com as operações de CRUD completas, persistência em banco de dados
+  relacional e controle de acesso por login. A regra que impede dois atendimentos simultâneos para o mesmo
+  profissional resolve o principal problema do controle manual descrito na introdução.</p>
+  <p>Durante o desenvolvimento ficou clara a importância de especificar antes de programar. Os requisitos e o
+  DER definidos no início serviram como guia durante toda a implementação: cada tabela do diagrama virou um
+  comando <code>CREATE TABLE</code>, e cada caso de uso virou um conjunto de rotas e telas. Quando surgia uma dúvida
+  sobre o comportamento do sistema, a resposta estava nas regras de negócio documentadas.</p>
+  <p>Do ponto de vista técnico, o projeto permitiu praticar a criação de uma aplicação web com Flask, o uso de
+  templates para gerar páginas dinâmicas e o acesso a banco de dados com SQL puro, incluindo junções entre
+  tabelas e o uso de chaves estrangeiras para garantir a integridade dos dados. Também mostrou na prática
+  cuidados de segurança que nem sempre aparecem em exercícios menores, como guardar senhas apenas em forma de
+  <i>hash</i> e usar consultas parametrizadas. A escrita de testes automatizados ajudou a encontrar um erro em
+  que a conexão com o banco não era fechada corretamente no Windows, o que reforçou o valor de testar o código
+  desde cedo.</p>
+  <p>Como trabalhos futuros, o sistema poderia receber perfis de acesso diferentes (administrador e atendente),
+  o envio de lembretes aos clientes por mensagem, relatórios de faturamento por período e uma página para que o
+  próprio cliente escolha seu horário pela internet.</p>
+</section>
+
+<!-- ============================ REFERÊNCIAS =========================== -->
+<section class="refs quebra">
+  <h1 id="ref">REFERÊNCIAS</h1>
+  <p>BOOCH, G.; RUMBAUGH, J.; JACOBSON, I. <b>UML</b>: guia do usuário. 2. ed. Rio de Janeiro: Elsevier, 2012.</p>
+  <p>BOOTSTRAP. <b>Bootstrap 5.3 documentation</b>. [S. l.], 2026. Disponível em: https://getbootstrap.com/docs/5.3/. Acesso em: 9 nov. 2026.</p>
+  <p>ELMASRI, R.; NAVATHE, S. B. <b>Sistemas de banco de dados</b>. 6. ed. São Paulo: Pearson Addison Wesley, 2011.</p>
+  <p>PALLETS. <b>Flask documentation (3.1.x)</b>. [S. l.], 2026. Disponível em: https://flask.palletsprojects.com/. Acesso em: 9 nov. 2026.</p>
+  <p>PRESSMAN, R. S.; MAXIM, B. R. <b>Engenharia de software</b>: uma abordagem profissional. 8. ed. Porto Alegre: AMGH, 2016.</p>
+  <p>PYTHON SOFTWARE FOUNDATION. <b>Python 3.12 documentation</b>. [S. l.], 2026. Disponível em: https://docs.python.org/3.12/. Acesso em: 9 nov. 2026.</p>
+  <p>SOMMERVILLE, I. <b>Engenharia de software</b>. 9. ed. São Paulo: Pearson Prentice Hall, 2011.</p>
+  <p>SQLITE. <b>SQLite documentation</b>. [S. l.], 2026. Disponível em: https://www.sqlite.org/docs.html. Acesso em: 9 nov. 2026.</p>
+</section>
+
+</body>
+</html>

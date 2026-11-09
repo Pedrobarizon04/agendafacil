@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block titulo %}Início{% endblock %}
+{% block conteudo %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="mb-0">Olá, {{ g.usuario['nome'] }}</h2>
+  <a class="btn btn-dark" href="{{ url_for('agendamento_form') }}"><i class="bi bi-plus-lg"></i> Novo agendamento</a>
+</div>
+
+<div class="row g-3 mb-4">
+  {% for rotulo, valor, link in [
+      ('Atendimentos hoje', totais.hoje, url_for('agendamentos_lista')),
+      ('Clientes', totais.clientes, url_for('clientes_lista')),
+      ('Profissionais ativos', totais.profissionais, url_for('profissionais_lista')),
+      ('Serviços', totais.servicos, url_for('servicos_lista'))] %}
+  <div class="col-6 col-lg-3">
+    <a class="text-decoration-none text-reset" href="{{ link }}">
+      <div class="card cartao-total shadow-sm"><div class="card-body">
+        <div class="text-muted small">{{ rotulo }}</div>
+        <div class="numero">{{ valor }}</div>
+      </div></div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+<h4 class="mb-3">Agenda de hoje</h4>
+{% with agendamentos = agenda %}{% include "_tabela_agenda.html" %}{% endwith %}
+{% endblock %}

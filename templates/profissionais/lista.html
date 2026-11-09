@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block titulo %}Profissionais{% endblock %}
+{% block conteudo %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="mb-0">Profissionais</h2>
+  <a class="btn btn-dark" href="{{ url_for('profissional_form') }}"><i class="bi bi-plus-lg"></i> Novo profissional</a>
+</div>
+<div class="table-responsive">
+<table class="table table-hover bg-white shadow-sm rounded">
+  <thead class="table-light"><tr><th>Nome</th><th>Especialidade</th><th>Telefone</th><th>Situação</th><th class="text-end">Ações</th></tr></thead>
+  <tbody>
+  {% for p in profissionais %}
+    <tr>
+      <td>{{ p['nome'] }}</td>
+      <td>{{ p['especialidade'] or '—' }}</td>
+      <td>{{ p['telefone'] or '—' }}</td>
+      <td>{% if p['ativo'] %}<span class="badge text-bg-success">Ativo</span>{% else %}<span class="badge text-bg-secondary">Inativo</span>{% endif %}</td>
+      <td class="text-end btn-acoes">
+        <a class="btn btn-sm btn-outline-primary" href="{{ url_for('profissional_form', id=p['id']) }}" title="Editar"><i class="bi bi-pencil"></i></a>
+        <form method="post" action="{{ url_for('profissional_excluir', id=p['id']) }}" onsubmit="return confirm('Excluir {{ p['nome'] }}?')">
+          <button class="btn btn-sm btn-outline-danger" title="Excluir"><i class="bi bi-trash"></i></button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5" class="text-center text-muted py-4">Nenhum profissional cadastrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

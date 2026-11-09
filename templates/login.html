@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %}Entrar{% endblock %}
+{% block conteudo %}
+<div class="tela-login">
+  <div class="text-center mb-4">
+    <h1 class="fw-bold"><i class="bi bi-scissors"></i> AgendaFácil</h1>
+    <p class="text-muted">Agendamento para barbearias</p>
+  </div>
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+      <form method="post">
+        <div class="mb-3">
+          <label class="form-label" for="email">E-mail</label>
+          <input class="form-control" type="email" id="email" name="email" required autofocus>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="senha">Senha</label>
+          <input class="form-control" type="password" id="senha" name="senha" required>
+        </div>
+        <button class="btn btn-dark w-100" type="submit">Entrar</button>
+      </form>
+    </div>
+  </div>
+  <p class="text-center mt-3">Não tem conta? <a href="{{ url_for('usuario_novo') }}">Cadastre-se</a></p>
+</div>
+{% endblock %}

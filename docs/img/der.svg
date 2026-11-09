@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="Arial, Helvetica, sans-serif" font-size="15">
+  <rect width="900" height="500" fill="#fff"/>
+  <style>
+    .caixa { fill: #fff; stroke: #333; stroke-width: 1.5; }
+    .topo { fill: #3a3a3a; }
+    .nome { fill: #fff; font-weight: bold; font-size: 16px; }
+    .chave { fill: #f58220; font-weight: bold; font-size: 12px; }
+    .linha { fill: none; stroke: #333; stroke-width: 1.4; }
+    .card { font-size: 14px; font-weight: bold; }
+  </style>
+
+  <!-- CLIENTE -->
+  <rect class="caixa" x="30" y="30" width="220" height="140"/>
+  <rect class="topo" x="30" y="30" width="220" height="30"/>
+  <text class="nome" x="140" y="50" text-anchor="middle">CLIENTE</text>
+  <text x="42" y="79">id</text><text class="chave" x="238" y="79" text-anchor="end">PK</text>
+  <text x="42" y="99">nome</text>
+  <text x="42" y="119">telefone</text>
+  <text x="42" y="139">email</text>
+  <text x="42" y="159">criado_em</text>
+
+  <!-- PROFISSIONAL -->
+  <rect class="caixa" x="30" y="320" width="220" height="140"/>
+  <rect class="topo" x="30" y="320" width="220" height="30"/>
+  <text class="nome" x="140" y="340" text-anchor="middle">PROFISSIONAL</text>
+  <text x="42" y="369">id</text><text class="chave" x="238" y="369" text-anchor="end">PK</text>
+  <text x="42" y="389">nome</text>
+  <text x="42" y="409">especialidade</text>
+  <text x="42" y="429">telefone</text>
+  <text x="42" y="449">ativo</text>
+
+  <!-- SERVICO -->
+  <rect class="caixa" x="650" y="30" width="220" height="140"/>
+  <rect class="topo" x="650" y="30" width="220" height="30"/>
+  <text class="nome" x="760" y="50" text-anchor="middle">SERVICO</text>
+  <text x="662" y="79">id</text><text class="chave" x="858" y="79" text-anchor="end">PK</text>
+  <text x="662" y="99">nome</text>
+  <text x="662" y="119">descricao</text>
+  <text x="662" y="139">preco</text>
+  <text x="662" y="159">duracao_min</text>
+
+  <!-- USUARIO -->
+  <rect class="caixa" x="650" y="320" width="220" height="140"/>
+  <rect class="topo" x="650" y="320" width="220" height="30"/>
+  <text class="nome" x="760" y="340" text-anchor="middle">USUARIO</text>
+  <text x="662" y="369">id</text><text class="chave" x="858" y="369" text-anchor="end">PK</text>
+  <text x="662" y="389">nome</text>
+  <text x="662" y="409">email</text><text class="chave" x="858" y="409" text-anchor="end">UNIQUE</text>
+  <text x="662" y="429">senha_hash</text>
+  <text x="662" y="449">criado_em</text>
+
+  <!-- AGENDAMENTO -->
+  <rect class="caixa" x="340" y="130" width="230" height="220"/>
+  <rect class="topo" x="340" y="130" width="230" height="30"/>
+  <text class="nome" x="455" y="150" text-anchor="middle">AGENDAMENTO</text>
+  <text x="352" y="179">id</text><text class="chave" x="558" y="179" text-anchor="end">PK</text>
+  <text x="352" y="199">cliente_id</text><text class="chave" x="558" y="199" text-anchor="end">FK</text>
+  <text x="352" y="219">profissional_id</text><text class="chave" x="558" y="219" text-anchor="end">FK</text>
+  <text x="352" y="239">servico_id</text><text class="chave" x="558" y="239" text-anchor="end">FK</text>
+  <text x="352" y="259">usuario_id</text><text class="chave" x="558" y="259" text-anchor="end">FK</text>
+  <text x="352" y="279">data_hora</text>
+  <text x="352" y="299">status</text>
+  <text x="352" y="319">observacao</text>
+  <text x="352" y="339">criado_em</text>
+
+  <!-- CLIENTE 1 —— N AGENDAMENTO -->
+  <polyline class="linha" points="250,74 295,74 295,194 340,194"/>
+  <line class="linha" x1="258" y1="66" x2="258" y2="82"/><line class="linha" x1="264" y1="66" x2="264" y2="82"/>
+  <line class="linha" x1="326" y1="194" x2="340" y2="186"/><line class="linha" x1="326" y1="194" x2="340" y2="202"/>
+  <circle cx="320" cy="194" r="5" fill="#fff" stroke="#333" stroke-width="1.4"/>
+  <text class="card" x="270" y="66">1</text><text class="card" x="326" y="183">N</text>
+  <text x="300" y="112" font-size="13" font-style="italic">realiza</text>
+
+  <!-- PROFISSIONAL 1 —— N AGENDAMENTO -->
+  <polyline class="linha" points="250,364 295,364 295,214 340,214"/>
+  <line class="linha" x1="258" y1="356" x2="258" y2="372"/><line class="linha" x1="264" y1="356" x2="264" y2="372"/>
+  <line class="linha" x1="326" y1="214" x2="340" y2="206"/><line class="linha" x1="326" y1="214" x2="340" y2="222"/>
+  <circle cx="320" cy="214" r="5" fill="#fff" stroke="#333" stroke-width="1.4"/>
+  <text class="card" x="270" y="356">1</text><text class="card" x="326" y="234">N</text>
+  <text x="289" y="300" text-anchor="end" font-size="13" font-style="italic">atende</text>
+
+  <!-- SERVICO 1 —— N AGENDAMENTO -->
+  <polyline class="linha" points="650,74 610,74 610,234 570,234"/>
+  <line class="linha" x1="642" y1="66" x2="642" y2="82"/><line class="linha" x1="636" y1="66" x2="636" y2="82"/>
+  <line class="linha" x1="584" y1="234" x2="570" y2="226"/><line class="linha" x1="584" y1="234" x2="570" y2="242"/>
+  <circle cx="590" cy="234" r="5" fill="#fff" stroke="#333" stroke-width="1.4"/>
+  <text class="card" x="624" y="66">1</text><text class="card" x="577" y="223">N</text>
+  <text x="616" y="202" font-size="13" font-style="italic">compõe</text>
+
+  <!-- USUARIO 0..1 —— N AGENDAMENTO -->
+  <polyline class="linha" points="650,364 610,364 610,254 570,254"/>
+  <line class="linha" x1="642" y1="356" x2="642" y2="372"/>
+  <circle cx="634" cy="364" r="5" fill="#fff" stroke="#333" stroke-width="1.4"/>
+  <line class="linha" x1="584" y1="254" x2="570" y2="246"/><line class="linha" x1="584" y1="254" x2="570" y2="262"/>
+  <circle cx="590" cy="254" r="5" fill="#fff" stroke="#333" stroke-width="1.4"/>
+  <text class="card" x="612" y="352">0..1</text><text class="card" x="577" y="275">N</text>
+  <text x="616" y="302" font-size="13" font-style="italic">registra</text>
+</svg>

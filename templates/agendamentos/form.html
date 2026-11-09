@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block titulo %}{{ 'Editar' if ag else 'Novo' }} agendamento{% endblock %}
+{% block conteudo %}
+{% set valor = request.form if request.method == 'POST' else (ag or {}) %}
+<h2 class="mb-3">{{ 'Editar' if ag else 'Novo' }} agendamento</h2>
+<div class="card shadow-sm" style="max-width: 720px"><div class="card-body">
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label" for="cliente_id">Cliente *</label>
+    <select class="form-select" id="cliente_id" name="cliente_id" required>
+      <option value="">Selecione...</option>
+      {% for c in clientes %}
+        <option value="{{ c['id'] }}" {{ 'selected' if valor['cliente_id']|string == c['id']|string }}>{{ c['nome'] }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label" for="profissional_id">Profissional *</label>
+      <select class="form-select" id="profissional_id" name="profissional_id" required>
+        <option value="">Selecione...</option>
+        {% for p in profissionais %}
+          <option value="{{ p['id'] }}" {{ 'selected' if valor['profissional_id']|string == p['id']|string }}>{{ p['nome'] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label class="form-label" for="servico_id">Serviço *</label>
+      <select class="form-select" id="servico_id" name="servico_id" required>
+        <option value="">Selecione...</option>
+        {% for s in servicos %}
+          <option value="{{ s['id'] }}" {{ 'selected' if valor['servico_id']|string == s['id']|string }}>{{ s['nome'] }} — {{ s['preco'] | moeda }} ({{ s['duracao_min'] }} min)</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label" for="data_hora">Data e hora *</label>
+      <input class="form-control" type="datetime-local" id="data_hora" name="data_hora" required
+             value="{{ (valor['data_hora'] or '')|replace(' ', 'T') }}">
+    </div>
+    {% if ag %}
+    <div class="col-md-6 mb-3">
+      <label class="form-label" for="status">Status</label>
+      <select class="form-select" id="status" name="status">
+        {% for chave, nome in STATUS.items() %}
+          <option value="{{ chave }}" {{ 'selected' if valor['status'] == chave }}>{{ nome }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endif %}
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="observacao">Observação</label>
+    <textarea class="form-control" id="observacao" name="observacao" rows="2">{{ valor['observacao'] or '' }}</textarea>
+  </div>
+  <button class="btn btn-dark" type="submit">Salvar</button>
+  <a class="btn btn-link" href="{{ url_for('agendamentos_lista') }}">Cancelar</a>
+</form>
+</div></div>
+{% endblock %}

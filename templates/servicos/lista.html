@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block titulo %}Serviços{% endblock %}
+{% block conteudo %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="mb-0">Serviços</h2>
+  <a class="btn btn-dark" href="{{ url_for('servico_form') }}"><i class="bi bi-plus-lg"></i> Novo serviço</a>
+</div>
+<div class="table-responsive">
+<table class="table table-hover bg-white shadow-sm rounded">
+  <thead class="table-light"><tr><th>Serviço</th><th>Descrição</th><th class="text-end">Preço</th><th class="text-end">Duração</th><th class="text-end">Ações</th></tr></thead>
+  <tbody>
+  {% for s in servicos %}
+    <tr>
+      <td>{{ s['nome'] }}</td>
+      <td>{{ s['descricao'] or '—' }}</td>
+      <td class="text-end">{{ s['preco'] | moeda }}</td>
+      <td class="text-end">{{ s['duracao_min'] }} min</td>
+      <td class="text-end btn-acoes">
+        <a class="btn btn-sm btn-outline-primary" href="{{ url_for('servico_form', id=s['id']) }}" title="Editar"><i class="bi bi-pencil"></i></a>
+        <form method="post" action="{{ url_for('servico_excluir', id=s['id']) }}" onsubmit="return confirm('Excluir {{ s['nome'] }}?')">
+          <button class="btn btn-sm btn-outline-danger" title="Excluir"><i class="bi bi-trash"></i></button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5" class="text-center text-muted py-4">Nenhum serviço cadastrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{# Tabela de agendamentos reaproveitada na página inicial e na lista de agendamentos #}
+<div class="table-responsive">
+<table class="table table-hover bg-white shadow-sm rounded mb-0">
+  <thead class="table-light">
+    <tr>
+      <th>Data/hora</th><th>Cliente</th><th>Profissional</th><th>Serviço</th>
+      <th class="text-end">Valor</th><th>Status</th><th class="text-end">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for a in agendamentos %}
+    {% set cor = {'agendado': 'primary', 'concluido': 'success', 'cancelado': 'secondary'}[a['status']] %}
+    <tr>
+      <td>{{ a['data_hora'] | data_br }}</td>
+      <td>{{ a['cliente'] }}</td>
+      <td>{{ a['profissional'] }}</td>
+      <td>{{ a['servico'] }} <small class="text-muted">({{ a['duracao_min'] }} min)</small></td>
+      <td class="text-end">{{ a['preco'] | moeda }}</td>
+      <td><span class="badge text-bg-{{ cor }}">{{ STATUS[a['status']] }}</span></td>
+      <td class="text-end btn-acoes">
+        <a class="btn btn-sm btn-outline-primary" href="{{ url_for('agendamento_form', id=a['id']) }}" title="Editar"><i class="bi bi-pencil"></i></a>
+        <form method="post" action="{{ url_for('agendamento_excluir', id=a['id']) }}" onsubmit="return confirm('Excluir este agendamento?')">
+          <button class="btn btn-sm btn-outline-danger" title="Excluir"><i class="bi bi-trash"></i></button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="7" class="text-center text-muted py-4">Nenhum agendamento encontrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
