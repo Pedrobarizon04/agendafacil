@@ -32,7 +32,7 @@ Também tem login com senha guardada como hash, cadastro de usuário e uma pági
 Pré-requisito: Python 3.12 ou superior.
 
 ```bash
-git clone <url-deste-repositorio>
+git clone https://github.com/Pedrobarizon04/agendafacil.git
 cd agendafacil
 python -m venv .venv
 .venv\Scripts\activate          # Windows  (no Linux/Mac: source .venv/bin/activate)
