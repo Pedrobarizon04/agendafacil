@@ -71,3 +71,7 @@ docs/               documentação (PDF), diagramas e script que gera o PDF
 - [Diagrama entidade-relacionamento](docs/img/der.svg)
 
 ![Diagrama entidade-relacionamento](docs/img/der.svg)
+
+## Autor
+
+Pedro Lamberto Barizon ([@Pedrobarizon04](https://github.com/Pedrobarizon04))
